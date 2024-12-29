@@ -20,6 +20,10 @@ def button_click(event):
 root = tk.Tk()
 root.title("YKalc")
 
+# アイコンを設定 (yk.pngファイルがリポジトリのルートディレクトリにあることを確認)
+icon = tk.PhotoImage(file="yk.png")
+root.iconphoto(True, icon)
+
 # グリッドの行と列のサイズ変更を設定
 root.rowconfigure(0, weight=1)
 for i in range(1, 5):
