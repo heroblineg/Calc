@@ -18,10 +18,10 @@ def button_click(event):
 
 # メインウィンドウの作成
 root = tk.Tk()
-root.title("YKalc")
+root.title("Calc")
 
 # アイコンを設定 (yk.pngファイルがリポジトリのルートディレクトリにあることを確認)
-icon = tk.PhotoImage(file="yk.png")
+icon = tk.PhotoImage(file="icon.png")
 root.iconphoto(True, icon)
 
 # グリッドの行と列のサイズ変更を設定
