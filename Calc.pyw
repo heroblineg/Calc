@@ -1,4 +1,5 @@
 import tkinter as tk
+import re
 
 # ボタンがクリックされたときの処理
 def button_click(event):
@@ -6,14 +7,9 @@ def button_click(event):
     if text == "=":
         try:
             expression = entry.get()
-            # 数字の最初に0がついた部分を修正
-            fixed_expression = ""
-            for part in expression.split():
-                if part.isnumeric() and part.startswith("0") and len(part) > 1:
-                    fixed_expression += str(int(part)) + " "
-                else:
-                    fixed_expression += part + " "
-            result = eval(fixed_expression.strip())
+            # 数字の先頭にある不必要な0を削除
+            fixed_expression = re.sub(r'\b0+(?=[0-9])', '', expression)
+            result = eval(fixed_expression)
             entry.delete(0, tk.END)
             entry.insert(tk.END, str(result))
         except Exception:
