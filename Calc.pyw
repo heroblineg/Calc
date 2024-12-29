@@ -5,10 +5,18 @@ def button_click(event):
     text = event.widget.cget("text")
     if text == "=":
         try:
-            result = eval(entry.get())
+            expression = entry.get()
+            # 数字の最初に0がついた部分を修正
+            fixed_expression = ""
+            for part in expression.split():
+                if part.isnumeric() and part.startswith("0") and len(part) > 1:
+                    fixed_expression += str(int(part)) + " "
+                else:
+                    fixed_expression += part + " "
+            result = eval(fixed_expression.strip())
             entry.delete(0, tk.END)
             entry.insert(tk.END, str(result))
-        except Exception as e:
+        except Exception:
             entry.delete(0, tk.END)
             entry.insert(tk.END, "Error")
     elif text == "C":
